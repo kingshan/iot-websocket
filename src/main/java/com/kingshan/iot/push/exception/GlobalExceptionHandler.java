@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * <p>
- *
+ *  全局异常捕获处理
  * </p>
  *
  * @author: Kingshan
@@ -40,6 +40,11 @@ public class GlobalExceptionHandler {
         return Result.error("操作失败，"+e.getMessage());
     }
 
+    /**
+     * 处理Spring校验异常
+     * @param e
+     * @return
+     */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Result<?> handleRRException(MethodArgumentNotValidException e){
         List<ObjectError> errorList=e.getBindingResult().getAllErrors();

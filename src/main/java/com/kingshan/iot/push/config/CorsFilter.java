@@ -12,7 +12,7 @@ import java.io.IOException;
 
 /**
  * <p>
- *
+ * 支持跨域请求
  * </p>
  *
  * @author: Kingshan

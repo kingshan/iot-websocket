@@ -2,7 +2,7 @@ package com.kingshan.iot.push.exception;
 
 /**
  * <p>
- *
+ *  群组未找到
  * </p>
  *
  * @author: Kingshan
