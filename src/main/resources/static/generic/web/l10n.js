@@ -152,7 +152,7 @@ document.webL10n = (function(window, document, undefined) {
    *    triggered when the an error has occured.
    *
    * @return {void}
-   *    uses the following global variables: gL10nData, gTextData, gTextProp.
+   *    uses the following supervise variables: gL10nData, gTextData, gTextProp.
    */
 
   function parseResource(href, lang, successCallback, failureCallback) {
@@ -253,7 +253,7 @@ document.webL10n = (function(window, document, undefined) {
       });
     }
 
-    // load and parse l10n data (warning: global variables are used here)
+    // load and parse l10n data (warning: supervise variables are used here)
     xhrLoadText(href, function(response) {
       gTextData += response; // mostly for debug
 

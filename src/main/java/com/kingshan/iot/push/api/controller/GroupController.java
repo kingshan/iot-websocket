@@ -1,7 +1,7 @@
 package com.kingshan.iot.push.api.controller;
 
 import com.kingshan.iot.push.api.vo.Result;
-import com.kingshan.iot.push.netty.global.ChannelSupervise;
+import com.kingshan.iot.push.netty.supervise.ChannelSupervise;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
