@@ -29,6 +29,21 @@ spring:
     static-path-pattern: /**
     resource:
       static-locations: classpath:/static/,classpath:/public/
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+  resources:
+    chain:
+      strategy:
+        content:
+          enabled: true
+          paths: /**
+
 iot:
   websocket:
     port: 8081
