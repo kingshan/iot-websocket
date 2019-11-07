@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
  * <p>
  *
  * </p>
- *
+
  * @author: Kingshan
- * @since: 2019/11/7 14:40
+ * @since: 2019/11/7 15:58
  */
 @Api(tags="消息推送")
 @Slf4j
@@ -29,27 +29,21 @@ public class PushController {
     @PostMapping(value = "/user")
     public Result pushUser(@RequestBody @Validated Message message) {
         ChannelSupervise.send2User(message.getId(), message.getMessage());
-        Result result = new Result<>();
-        result.ok();
-        return result;
+        return Result.ok();
     }
 
     @ApiOperation(value="群组推送", notes="群组推送")
     @PostMapping(value = "/group")
     public Result pushGroup(@RequestBody @Validated Message message) {
         ChannelSupervise.send2Group(message.getId(), message.getMessage());
-        Result result = new Result<>();
-        result.ok();
-        return result;
+        return Result.ok();
     }
 
     @ApiOperation(value="全部推送", notes="全部推送")
     @PostMapping(value = "/all")
     public Result pushAll(@RequestBody @Validated String message) {
         ChannelSupervise.send2All(message);
-        Result result = new Result<>();
-        result.ok();
-        return result;
+        return Result.ok();
     }
 
 }
