@@ -17,7 +17,7 @@
                         <span class="layui-badge layui-bg-blue layuiadmin-badge">用户</span>
                     </div>
                     <div class="layui-card-body layuiadmin-card-list">
-                        <p class="layuiadmin-big-font">9,999,666</p>
+                        <p class="layuiadmin-big-font"  th:text="${dashboard.userCount}">0</p>
                         <p>
                             当前在线用户数
                             <span class="layuiadmin-span-color"> <i class="layui-icon"></i></span>
@@ -32,7 +32,7 @@
                         <span class="layui-badge layui-bg-cyan layuiadmin-badge">群组</span>
                     </div>
                     <div class="layui-card-body layuiadmin-card-list">
-                        <p class="layuiadmin-big-font">33,555</p>
+                        <p class="layuiadmin-big-font" th:text="${dashboard.groupCount}" >0</p>
                         <p>
                             当前群组数
                             <span class="layuiadmin-span-color"> <i class="layui-icon"></i></span>
@@ -48,7 +48,7 @@
                     </div>
                     <div class="layui-card-body layuiadmin-card-list">
 
-                        <p class="layuiadmin-big-font">0天 1时 2分</p>
+                        <p class="layuiadmin-big-font" th:text="${dashboard.systemRunTime}" >0天 0时 0分</p>
                         <p>
                             自上次启动时长
                             <span class="layuiadmin-span-color"> <i class="layui-icon"></i></span>
@@ -59,14 +59,14 @@
             <div class="layui-col-sm6 layui-col-md3">
                 <div class="layui-card">
                     <div class="layui-card-header">
-                        活跃用户
-                        <span class="layui-badge layui-bg-orange layuiadmin-badge"></span>
+                        推送消息数
+                        <span class="layui-badge layui-bg-orange layuiadmin-badge">内存</span>
                     </div>
                     <div class="layui-card-body layuiadmin-card-list">
 
-                        <p class="layuiadmin-big-font">66,666</p>
+                        <p class="layuiadmin-big-font" th:text="${dashboard.messageCount}">0</p>
                         <p>
-                            最近一个月
+                            消息数
                             <span class="layuiadmin-span-color">15% <i class="layui-icon"></i></span>
                         </p>
                     </div>
@@ -75,37 +75,37 @@
             <div class="layui-col-sm12">
                 <div class="layui-card">
                     <div class="layui-card-header">
-                        访问量
+                        在线用户数量
                         <div class="layui-btn-group layuiadmin-btn-group">
-                            <button class="layui-btn layui-btn-primary layui-btn-xs">去年</button>
-                            <button class="layui-btn layui-btn-primary layui-btn-xs">今年</button>
+                            <!--<button class="layui-btn layui-btn-primary layui-btn-xs">去年</button>-->
+                            <!--<button class="layui-btn layui-btn-primary layui-btn-xs">今年</button>-->
                         </div>
                     </div>
                     <div class="layui-card-body">
                         <div class="layui-row">
                             <div class="layui-col-sm8">
-                                <div id="echart" style="width: 100%;height:350px;"></div>
+                                <div id="echart" style="width: 100%;height:300px;"></div>
                             </div>
                             <div class="layui-col-sm4">
                                 <div class="layuiadmin-card-list">
-                                    <p class="layuiadmin-normal-font">月访问数</p>
-                                    <span>同上期增长</span>
+                                    <p class="layuiadmin-normal-font">CPU使用率</p>
+                                    <span></span>
                                     <div class="layui-progress layui-progress-big" lay-showpercent="yes">
-                                        <div class="layui-progress-bar" lay-percent="30%" style="width: 30%;"><span class="layui-progress-text">30%</span></div>
+                                        <div class="layui-progress-bar" th:lay-percent="${dashboard.cpu}" th:style="'width:'+ ${dashboard.cpu}+';'"><span class="layui-progress-text" th:text="${dashboard.cpu}">0%</span></div>
                                     </div>
                                 </div>
                                 <div class="layuiadmin-card-list">
-                                    <p class="layuiadmin-normal-font">月下载数</p>
-                                    <span>同上期增长</span>
+                                    <p class="layuiadmin-normal-font">内存使用率</p>
+                                    <span></span>
                                     <div class="layui-progress layui-progress-big" lay-showpercent="yes">
-                                        <div class="layui-progress-bar" lay-percent="20%" style="width: 20%;"><span class="layui-progress-text">20%</span></div>
+                                        <div class="layui-progress-bar"  th:lay-percent="${dashboard.memery}" th:style="'width:'+ ${dashboard.memery}+';'"><span class="layui-progress-text" th:text="${dashboard.memery}" >0%</span></div>
                                     </div>
                                 </div>
                                 <div class="layuiadmin-card-list">
-                                    <p class="layuiadmin-normal-font">月收入</p>
-                                    <span>同上期增长</span>
+                                    <p class="layuiadmin-normal-font">线程使用率</p>
+                                    <span></span>
                                     <div class="layui-progress layui-progress-big" lay-showpercent="yes">
-                                        <div class="layui-progress-bar" lay-percent="25%" style="width: 25%;"><span class="layui-progress-text">25%</span></div>
+                                        <div class="layui-progress-bar"  th:lay-percent="${dashboard.thread}" th:style="'width:'+ ${dashboard.thread}+';'"><span class="layui-progress-text" th:text="${dashboard.thread}" >0%</span></div>
                                     </div>
                                 </div>
                             </div>
@@ -118,7 +118,7 @@
         </div>
     </div>
 </div>
-<script th:src="@{/layui/layui.js}"></script>>
+<script th:src="@{/layui/layui.js}"></script>
 <script th:src="@{/jquery/jquery-3.4.1.min.js}"></script>
 <script th:src="@{/echarts/echarts.min.js}"></script>
 <script>

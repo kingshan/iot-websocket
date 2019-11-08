@@ -9,6 +9,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * <p>
  *
@@ -19,9 +22,19 @@ import org.springframework.stereotype.Component;
  */
 
 @Configuration
-@Data
 public class StaticConfig {
 
+    public static Date systemStartDate;
 
+    public static AtomicInteger messageCount = new AtomicInteger(0);
+
+    @Bean
+    public void initConfig(){
+        systemStartDate = new Date();
+    }
+
+    public static void  addMessageCount(){
+        messageCount.getAndIncrement();
+    }
 
 }

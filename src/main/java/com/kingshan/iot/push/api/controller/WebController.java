@@ -1,7 +1,13 @@
 package com.kingshan.iot.push.api.controller;
 
+import com.kingshan.iot.push.api.vo.Dashboard;
+import com.kingshan.iot.push.config.StaticConfig;
+import com.kingshan.iot.push.netty.supervise.ChannelSupervise;
+import com.kingshan.iot.push.utils.DateUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Date;
 
 /**
  * <p>
@@ -21,7 +27,14 @@ public class WebController {
     }
 
     @RequestMapping("/dashboard")
-    public String dashboard() {
+    public String dashboard(Dashboard dashboard) {
+        dashboard.setUserCount(ChannelSupervise.getUserCount());
+        dashboard.setGroupCount(ChannelSupervise.getGroupCount());
+        dashboard.setMessageCount(StaticConfig.messageCount.intValue());
+        dashboard.setSystemRunTime(DateUtil.diff(StaticConfig.systemStartDate,new Date()));
+        dashboard.setCpu("20%");
+        dashboard.setMemery("30%");
+        dashboard.setThread("2%");
         return "dashboard";
     }
 }

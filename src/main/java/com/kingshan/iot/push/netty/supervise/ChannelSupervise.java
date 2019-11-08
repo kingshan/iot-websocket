@@ -1,5 +1,6 @@
 package com.kingshan.iot.push.netty.supervise;
 
+import com.kingshan.iot.push.config.StaticConfig;
 import com.kingshan.iot.push.exception.GroupNotFindException;
 import com.kingshan.iot.push.exception.UserNotFindException;
 import io.netty.channel.Channel;
@@ -127,6 +128,7 @@ public class ChannelSupervise {
      */
     public static void send2All(String tws){
         GlobalGroup.writeAndFlush(new TextWebSocketFrame(tws));
+        StaticConfig.addMessageCount();
     }
 
     /**
@@ -136,6 +138,7 @@ public class ChannelSupervise {
      */
     public static void send2User(String userId, String tws){
         findUserChannel(userId).writeAndFlush(new TextWebSocketFrame(tws));
+        StaticConfig.addMessageCount();
     }
 
     /**
@@ -147,6 +150,7 @@ public class ChannelSupervise {
         findGroupChannel(groupId).stream().forEach(channel -> {
             channel.writeAndFlush(new TextWebSocketFrame(tws));
         });
+        StaticConfig.addMessageCount();
     }
 
     /**

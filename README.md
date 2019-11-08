@@ -8,6 +8,7 @@ git clone https://github.com/kingshan/iot-websocket.git
 ~~~
 
 ## 功能列表
+* 管理界面
 * 用户推送
 * 群组(级联)推送
 * 全部推送
